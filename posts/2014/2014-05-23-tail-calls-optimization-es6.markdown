@@ -120,7 +120,7 @@ reading and see you next time.
 [performance]: /post/performance-is-a-science
 
 [boc]: http://www.amazon.com/Building-Optimizing-Compiler-Bob-Morgan-ebook/dp/B008COCE9G/
-[ACDI]: www.amazon.com/Advanced-Compiler-Design-Implementation-Muchnick-ebook/dp/B003VM7GGK/
+[ACDI]: http://www.amazon.com/Advanced-Compiler-Design-Implementation-Muchnick-ebook/dp/B003VM7GGK/
 
 [mark]: http://www.complang.tuwien.ac.at/schani/
 [juggling]: http://www.complang.tuwien.ac.at/schani/jugglevids/index.html
