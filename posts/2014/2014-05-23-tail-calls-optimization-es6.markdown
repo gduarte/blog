@@ -2,7 +2,7 @@
 layout: post
 title: "Tail Calls, Optimization, and ES6"
 date: 2014-05-23 05:00:00 -0600
-comments: false
+comments: true
 categories: 
 - Software Illustrated
 - Internals
@@ -100,8 +100,8 @@ Since JavaScript is now the most popular transpilation target, proper tail calls
 become even more important there. So kudos to ES6 for delivering it along with
 many other significant improvements. It's like Christmas for JS programmers.
 
-This concludes our brief tour of tail calls compiler optimization.  Thanks for
-reading and see you next time.
+This concludes our brief tour of tail calls and compiler optimization.  Thanks
+for reading and see you next time.
 
 [SICP]: http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html
 [Lua]: http://www.lua.org/pil/6.3.html
