@@ -1,0 +1,24 @@
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
+(gdb) break factorial.c:8
+Breakpoint 1 at 0x80483fd: file factorial.c, line 8.
+(gdb) run
+Starting program: /home/gustavoduarte/factorial 
+
+Breakpoint 1, factorial (n=1) at factorial.c:8
+8			return 1;
+(gdb) i s
+#0  factorial (n=1) at factorial.c:8
+#1  0x08048412 in factorial (n=2) at factorial.c:11
+#2  0x08048412 in factorial (n=3) at factorial.c:11
+#3  0x08048412 in factorial (n=4) at factorial.c:11
+#4  0x08048412 in factorial (n=5) at factorial.c:11
+#5  0x08048430 in main (argc=1) at factorial.c:17
+(gdb) x/32wx $esp
+0xbffff67c:	0x00000001	0xdeadbeef	0xbffff694	0x08048412
+0xbffff68c:	0x00000001	0xdeadbeef	0xbffff6a4	0x08048412
+0xbffff69c:	0x00000002	0xdeadbeef	0xbffff6b4	0x08048412
+0xbffff6ac:	0x00000003	0xdeadbeef	0xbffff6c4	0x08048412
+0xbffff6bc:	0x00000004	0xdeadbeef	0xbffff6d8	0x08048430
+0xbffff6cc:	0x00000005	0x08048450	0x00000000	0x00000000
+0xbffff6dc:	0xb7e454d3	0x00000001	0xbffff774	0xbffff77c
+0xbffff6ec:	0xb7fdc858	0x00000000	0xbffff71c	0xbffff77c

@@ -1,0 +1,25 @@
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
+(gdb) break maze.c:13
+Breakpoint 1 at 0x80483d7: file maze.c, line 13.
+(gdb) run
+Starting program: /home/gustavoduarte/maze 
+
+Breakpoint 1, explore (node=0x804a040) at maze.c:13
+13			return 1; // found cheese
+(gdb) i s
+#0  explore (node=0x804a040) at maze.c:13
+#1  0x080483ec in explore (node=0x804a050) at maze.c:16
+#2  0x080483ec in explore (node=0x804a060) at maze.c:16
+#3  0x080483fe in explore (node=0x804a070) at maze.c:16
+#4  0x080483fe in explore (node=0x804a080) at maze.c:16
+#5  0x08048428 in main (argc=1) at maze.c:22
+(gdb) x/32wx $esp
+0xbffff680:	0xbffff89f	0x00000000	0xbffff698	0x080483ec
+0xbffff690:	0x0804a040	0x00000000	0xbffff6a8	0x080483ec
+0xbffff6a0:	0x0804a050	0x00000000	0xbffff6b8	0x080483fe
+0xbffff6b0:	0x0804a060	0x00000000	0xbffff6c8	0x080483fe
+0xbffff6c0:	0x0804a070	0x00000000	0xbffff6d8	0x08048428
+0xbffff6d0:	0x0804a080	0x00000000	0x00000000	0xb7e454d3
+0xbffff6e0:	0x00000001	0xbffff774	0xbffff77c	0xb7fdc858
+0xbffff6f0:	0x00000000	0xbffff71c	0xbffff77c	0x00000000
+(gdb) quit

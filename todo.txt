@@ -1,0 +1,6 @@
+0. find designer
+0. about page
+0. photo
+0. logo
+0. post footer with subscription / twitter links
+0. mailchimp list
