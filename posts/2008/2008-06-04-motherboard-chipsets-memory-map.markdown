@@ -77,8 +77,8 @@ map tells the chipset which device should service requests for those
 addresses. This mapping of memory addresses away from RAM modules causes
 the classic hole in PC memory between 640KB and 1MB. A bigger hole
 arises when memory addresses are reserved for video cards and PCI
-devices. This is why 32-bit OSes have [problems using 4 gigs of
-RAM](http://support.microsoft.com/kb/929605). In Linux the file
+devices. This is why 32-bit OSes have
+[problems using 4 gigs of RAM](http://support.microsoft.com/kb/929605). In Linux the file
 **/proc/iomem** neatly lists these address range mappings. The diagram
 below shows a typical memory map for the first 4 gigs of physical memory
 addresses in an Intel PC:
@@ -102,13 +102,11 @@ are complex and they depend on the *mode* in which the CPU is running
 Regardless of the translation mechanism, the CPU mode determines how
 much physical memory can be accessed. For example, if the CPU is running
 in 32-bit mode, then it is only capable of physically addressing 4 GB
-(well, there is an exception called [physical address
-extension](http://en.wikipedia.org/wiki/Physical_address_extension), but
+(well, there is an exception called [physical address extension](http://en.wikipedia.org/wiki/Physical_address_extension), but
 ignore it for now). Since the top 1 GB or so of physical addresses are
 mapped to motherboard devices the CPU can effectively use only \~3 GB of
 RAM (sometimes less - I have a Vista machine where only 2.4 GB are
-usable). If the CPU is in [real
-mode](http://en.wikipedia.org/wiki/Real_mode), then it can only address
+usable). If the CPU is in [real mode](http://en.wikipedia.org/wiki/Real_mode), then it can only address
 1 *mega*byte of physical RAM (this is the only mode early Intel
 processors were capable of). On the other hand, a CPU running in 64-bit
 mode can physically access 64GB (few chipsets support that much RAM
