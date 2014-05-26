@@ -181,5 +181,5 @@ can't do the same for Windows ;) but I'll point out the highlights.
 [wp-sector]: http://en.wikipedia.org/wiki/Disk_sector
 [wp-acpi]: http://en.wikipedia.org/wiki/ACPI
 [wp-post]: http://en.wikipedia.org/wiki/Power_on_self_test
-[memory-map]: /post/motherboard-chipset-memory-map
+[memory-map]: /post/motherboard-chipsets-memory-map
 [185 Comments](/comments/how-computers-boot.html)
