@@ -1,0 +1,28 @@
+set logging file maze-gdb-output.txt
+set logging overwrite on
+set logging on
+
+break maze.c:13
+display $esp
+display $ebp
+run
+
+echo \nInspect the stack frames:\n\n
+i s
+
+echo \nLet's see where our mouse has been:\n
+print ** (maze_t **) ($esp + 16)
+print ** (maze_t **) ($esp + 32)
+print ** (maze_t **) ($esp + 48)
+print ** (maze_t **) ($esp + 64)
+print ** (maze_t **) ($esp + 80)
+
+echo \nInspect stack contents as words. These are converted little-endian
+echo \nfrom individual bytes into 4-byte numbers:\n\n
+
+x/25wx $esp
+
+echo \nAnd here is assembly code for main and explore:\n
+
+disas main
+disas explore

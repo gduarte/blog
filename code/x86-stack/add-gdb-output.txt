@@ -1,0 +1,196 @@
+# break at main's prolog
+Breakpoint 1 at 0x80483ca: file add.c, line 8.
+# also, let's print esp and ebp every time we run
+# go
+
+Breakpoint 1, main (argc=1) at add.c:8
+8	{
+2: $ebp = (void *) 0x0
+1: $esp = (void *) 0xbffff6dc
+# call   main
+Dump of assembler code for function main:
+=> 0x080483ca <+0>:	push   %ebp
+   0x080483cb <+1>:	mov    %esp,%ebp
+   0x080483cd <+3>:	sub    $0xc,%esp
+   0x080483d0 <+6>:	movl   $0x2,0x4(%esp)
+   0x080483d8 <+14>:	movl   $0x28,(%esp)
+   0x080483df <+21>:	call   0x80483b4 <add>
+   0x080483e4 <+26>:	mov    %eax,-0x4(%ebp)
+   0x080483e7 <+29>:	leave  
+   0x080483e8 <+30>:	ret    
+End of assembler dump.
+
+# let's inspect the stack memory, as bytes, like the diagrams show
+0xbffff6dc:	0xd3	0x54	0xe4	0xb7	0x01	0x00	0x00	0x00
+
+# we can also show contents as 4-byte words
+0xbffff6dc:	0xb7e454d3	0x00000001
+
+# let's find out where we're returning into:
+__libc_start_main + 243 in section .text of /lib/i386-linux-gnu/libc.so.6
+
+# push   %ebp
+0x080483cb	8	{
+2: $ebp = (void *) 0x0
+1: $esp = (void *) 0xbffff6d8
+# stack:
+0xbffff6d8:	0x00000000	0xb7e454d3	0x00000001
+
+
+# mov    %esp,%ebp
+0x080483cd	8	{
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6d8
+
+
+# sub    $0xc,%esp
+10		answer = add(40, 2);
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6cc
+# stack:
+0xbffff6cc:	0xb7fd1ff4	0x080483f0	0x00000000	0x00000000
+0xbffff6dc:	0xb7e454d3	0x00000001
+
+
+# movl   $0x2,0x4(%esp)
+0x080483d8	10		answer = add(40, 2);
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6cc
+# stack:
+0xbffff6cc:	0xb7fd1ff4	0x00000002	0x00000000	0x00000000
+0xbffff6dc:	0xb7e454d3	0x00000001
+
+
+# movl   $0x28,(%esp)
+0x080483df	10		answer = add(40, 2);
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6cc
+# stack:
+0xbffff6cc:	0x00000028	0x00000002	0x00000000	0x00000000
+0xbffff6dc:	0xb7e454d3	0x00000001
+
+
+# call   0x80483b4 <add>
+add (a=40, b=2) at add.c:2
+2	{
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6c8
+Dump of assembler code for function add:
+=> 0x080483b4 <+0>:	push   %ebp
+   0x080483b5 <+1>:	mov    %esp,%ebp
+   0x080483b7 <+3>:	sub    $0x4,%esp
+   0x080483ba <+6>:	mov    0xc(%ebp),%eax
+   0x080483bd <+9>:	mov    0x8(%ebp),%edx
+   0x080483c0 <+12>:	add    %edx,%eax
+   0x080483c2 <+14>:	mov    %eax,-0x4(%ebp)
+   0x080483c5 <+17>:	mov    -0x4(%ebp),%eax
+   0x080483c8 <+20>:	leave  
+   0x080483c9 <+21>:	ret    
+End of assembler dump.
+# stack:
+0xbffff6c8:	0x080483e4	0x00000028	0x00000002	0x00000000
+0xbffff6d8:	0x00000000	0xb7e454d3	0x00000001
+
+
+# => push   %ebp
+0x080483b5	2	{
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6c4
+# stack:
+0xbffff6c4:	0xbffff6d8	0x080483e4	0x00000028	0x00000002
+0xbffff6d4:	0x00000000	0x00000000	0xb7e454d3	0x00000001
+
+
+# mov    %esp,%ebp
+0x080483b7	2	{
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c4
+
+
+# sub    $0x4,%esp
+3		int result = a + b;
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c0
+# stack:
+0xbffff6c0:	0xb7fed270	0xbffff6d8	0x080483e4	0x00000028
+0xbffff6d0:	0x00000002	0x00000000	0x00000000	0xb7e454d3
+0xbffff6e0:	0x00000001
+
+
+# mov    0xc(%ebp),%eax
+0x080483bd	3		int result = a + b;
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c0
+
+
+# mov    0x8(%ebp),%edx
+0x080483c0	3		int result = a + b;
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c0
+
+
+# add    %edx,%eax
+0x080483c2	3		int result = a + b;
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c0
+
+
+# mov    %eax,-0x4(%ebp)
+4		return result;
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c0
+# stack:
+0xbffff6c0:	0x0000002a	0xbffff6d8	0x080483e4	0x00000028
+0xbffff6d0:	0x00000002	0x00000000	0x00000000	0xb7e454d3
+0xbffff6e0:	0x00000001
+
+# and here is the stack byte-for-byte, as the diagram shows, without
+# little-endian conversion into words:
+0xbffff6c0:	0x2a	0x00	0x00	0x00	0xd8	0xf6	0xff	0xbf
+0xbffff6c8:	0xe4	0x83	0x04	0x08	0x28	0x00	0x00	0x00
+0xbffff6d0:	0x02	0x00	0x00	0x00	0x00	0x00	0x00	0x00
+0xbffff6d8:	0x00	0x00	0x00	0x00	0xd3	0x54	0xe4	0xb7
+0xbffff6e0:	0x01	0x00	0x00	0x00
+
+
+# mov    -0x4(%ebp),%eax
+5	}
+2: $ebp = (void *) 0xbffff6c4
+1: $esp = (void *) 0xbffff6c0
+
+
+# leave
+0x080483c9	5	}
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6c8
+
+
+# ret
+0x080483e4 in main (argc=1) at add.c:10
+10		answer = add(40, 2);
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6cc
+
+
+# mov    %eax,-0x4(%ebp)
+11	}
+2: $ebp = (void *) 0xbffff6d8
+1: $esp = (void *) 0xbffff6cc
+
+
+# leave
+0x080483e8	11	}
+2: $ebp = (void *) 0x0
+1: $esp = (void *) 0xbffff6dc
+
+
+# ret
+0xb7e454d3 in __libc_start_main () from /lib/i386-linux-gnu/libc.so.6
+2: $ebp = (void *) 0x0
+1: $esp = (void *) 0xbffff6e0
+
+Our code is done. Stack is down to argc only:
+0xbffff6e0:	0x00000001
+
+
+ And that's it. Hope you enjoyed the byte spelunking :)

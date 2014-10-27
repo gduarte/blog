@@ -1,0 +1,95 @@
+Dump of assembler code for function main:
+   0x08048517 <+0>:	push   %ebp
+   0x08048518 <+1>:	mov    %esp,%ebp
+   0x0804851a <+3>:	sub    $0x14,%esp
+   0x0804851d <+6>:	movl   $0x8048630,(%esp)
+   0x08048524 <+13>:	call   0x80483f0 <puts@plt>
+   0x08048529 <+18>:	call   0x80484d4 <read>
+   0x0804852e <+23>:	mov    %eax,-0x8(%ebp)
+   0x08048531 <+26>:	call   0x80484d4 <read>
+   0x08048536 <+31>:	mov    %eax,-0x4(%ebp)
+   0x08048539 <+34>:	mov    $0x8048647,%eax
+   0x0804853e <+39>:	mov    -0x4(%ebp),%edx
+   0x08048541 <+42>:	mov    %edx,0x8(%esp)
+   0x08048545 <+46>:	mov    -0x8(%ebp),%edx
+   0x08048548 <+49>:	mov    %edx,0x4(%esp)
+   0x0804854c <+53>:	mov    %eax,(%esp)
+   0x0804854f <+56>:	call   0x80483c0 <printf@plt>
+   0x08048554 <+61>:	mov    $0x0,%eax
+   0x08048559 <+66>:	leave  
+   0x0804855a <+67>:	ret    
+End of assembler dump.
+Dump of assembler code for function read:
+   0x080484d4 <+0>:	push   %ebp
+   0x080484d5 <+1>:	mov    %esp,%ebp
+   0x080484d7 <+3>:	sub    $0x50,%esp
+   0x080484da <+6>:	mov    %gs:0x14,%eax
+   0x080484e0 <+12>:	mov    %eax,-0x4(%ebp)
+   0x080484e3 <+15>:	xor    %eax,%eax
+   0x080484e5 <+17>:	mov    0x804a020,%eax
+   0x080484ea <+22>:	mov    %eax,0x8(%esp)
+   0x080484ee <+26>:	movl   $0x40,0x4(%esp)
+   0x080484f6 <+34>:	lea    -0x44(%ebp),%eax
+   0x080484f9 <+37>:	mov    %eax,(%esp)
+   0x080484fc <+40>:	call   0x80483d0 <fgets@plt>
+   0x08048501 <+45>:	lea    -0x44(%ebp),%eax
+   0x08048504 <+48>:	mov    -0x4(%ebp),%edx
+   0x08048507 <+51>:	xor    %gs:0x14,%edx
+   0x0804850e <+58>:	je     0x8048515 <read+65>
+   0x08048510 <+60>:	call   0x80483e0 <__stack_chk_fail@plt>
+   0x08048515 <+65>:	leave  
+   0x08048516 <+66>:	ret    
+End of assembler dump.
+Breakpoint 1 at 0x8048501: file stackFolly.c, line 8.
+Breakpoint 2 at 0x8048531: file stackFolly.c, line 17.
+Breakpoint 3 at 0x8048539: file stackFolly.c, line 19.
+
+Breakpoint 1, read () at stackFolly.c:8
+8	    return data;
+
+# Let's see what we got from fgets for song
+$1 = "The Past is a Grotesque Animal\n\000\364\037\375\267\000\000\000\000\000\271\342\267\310\366\377\277\240&\377\267\364\366\377\277\364\037\375\267\000\000\000"
+
+Looks good. Here's some more stack content practice. $esp is:
+$2 = (void *) 0xbffff65c
+
+Dumping 22 words in the stack frame:
+0xbffff65c:	0xbffff668	0x00000040	0xb7fd2ac0	0x20656854
+0xbffff66c:	0x74736150	0x20736920	0x72472061	0x7365746f
+0xbffff67c:	0x20657571	0x6d696e41	0x000a6c61	0xb7fd1ff4
+0xbffff68c:	0x00000000	0xb7e2b900	0xbffff6c8	0xb7ff26a0
+0xbffff69c:	0xbffff6f4	0xb7fd1ff4	0x00000000	0xfba68e00
+0xbffff6ac:	0xbffff6c8	0x0804852e
+
+Notice the stack top is the address of data we passed to fgets(). It matches:
+$3 = (char (*)[64]) 0xbffff668
+
+Bottom of stack frame is return into main. Also makes sense:
+main + 23 in section .text of /media/psf/Home/Dropbox/blog/code/x86-stack/stackFolly
+
+Breakpoint 2, main (argc=1, argv=0xbffff764) at stackFolly.c:17
+17	    band = read();
+
+Song looking great so far:
+$4 = 0xbffff668 "The Past is a Grotesque Animal\n"
+
+Breakpoint 1, read () at stackFolly.c:8
+8	    return data;
+
+Breakpoint 3, main (argc=1, argv=0xbffff764) at stackFolly.c:19
+19	    printf("\n%sby %s", song, band);
+
+Now band looks ok:
+$5 = 0xbffff668 "of Montreal\n"
+
+But song has been overwritten:
+$6 = 0xbffff668 "of Montreal\n"
+
+Some of our old data is still there:
+$7 = "of Montreal\n\000 Grotesque Animal\n\000\364\037\375\267\000\000\000\000\000\271\342\267\310\366\377\277\240&\377\267\364\366\377\277\364\037\375\267\000\000\000"
+
+They point to the same spot:
+0xbffff6c0:	0xbffff668
+0xbffff6c4:	0xbffff668
+
+We're screwed.

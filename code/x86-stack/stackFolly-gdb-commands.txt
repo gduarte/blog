@@ -1,0 +1,44 @@
+set logging file stackFolly-gdb-output.txt
+set logging overwrite on
+set logging on
+
+disas main
+disas read
+
+break *read+45
+break *main+26
+break *main+34
+
+run
+
+echo \n# Let's see what we got from fgets for song\n
+print data
+echo \nLooks good. Here's some more stack content practice. $esp is:\n
+print $esp
+echo \nDumping 22 words in the stack frame:\n
+x/22wx $esp
+echo \nNotice the stack top is the address of data we passed to fgets(). It matches:\n
+print &data
+echo \nBottom of stack frame is return into main. Also makes sense:\n
+info symbol * (int *) ($esp + 84)
+
+continue
+
+echo \nSong looking great so far:\n
+print song
+
+continue
+continue
+
+echo \nNow band looks ok:\n
+print band
+echo \nBut song has been overwritten:\n
+print song
+echo \nSome of our old data is still there:\n
+p (char [64]) *song
+
+echo \nThey point to the same spot:\n
+x/1wx &song
+x/1wx &band
+
+echo \nWe're screwed.\n

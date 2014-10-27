@@ -1,0 +1,24 @@
+set logging file factorial-gdb-output.txt
+set logging overwrite on
+set logging on
+
+break factorial.c:8
+display $esp
+display $ebp
+run
+
+echo \nInspect the stack frames:\n\n
+i s
+
+echo \nInspect stack contents as words. These are converted little-endian
+echo \nfrom individual bytes into 4-byte numbers:\n\n
+
+x/26wx $esp
+
+echo \nInspect stack contents as bytes, as shown in the diagram:\n\n
+x/104bx $esp
+
+echo \nAnd here is assembly code for main and factorial:\n
+
+disas main
+disas factorial

@@ -1,0 +1,56 @@
+Dump of assembler code for function main:
+   0x08048538 <+0>:	push   %ebp
+   0x08048539 <+1>:	mov    %esp,%ebp
+   0x0804853b <+3>:	sub    $0x14,%esp
+   0x0804853e <+6>:	movl   $0x804866f,(%esp)
+   0x08048545 <+13>:	call   0x80483f0 <puts@plt>
+   0x0804854a <+18>:	call   0x80484e4 <read>
+   0x0804854f <+23>:	mov    %eax,-0x8(%ebp)
+   0x08048552 <+26>:	call   0x80484e4 <read>
+   0x08048557 <+31>:	mov    %eax,-0x4(%ebp)
+   0x0804855a <+34>:	mov    $0x8048686,%eax
+   0x0804855f <+39>:	mov    -0x4(%ebp),%edx
+   0x08048562 <+42>:	mov    %edx,0x8(%esp)
+   0x08048566 <+46>:	mov    -0x8(%ebp),%edx
+   0x08048569 <+49>:	mov    %edx,0x4(%esp)
+   0x0804856d <+53>:	mov    %eax,(%esp)
+   0x08048570 <+56>:	call   0x80483c0 <printf@plt>
+   0x08048575 <+61>:	mov    $0x0,%eax
+   0x0804857a <+66>:	leave  
+   0x0804857b <+67>:	ret    
+End of assembler dump.
+Dump of assembler code for function read:
+   0x080484e4 <+0>:	push   %ebp
+   0x080484e5 <+1>:	mov    %esp,%ebp
+   0x080484e7 <+3>:	sub    $0x10,%esp
+   0x080484ea <+6>:	movl   $0x40,(%esp)
+   0x080484f1 <+13>:	call   0x80483e0 <malloc@plt>
+   0x080484f6 <+18>:	mov    %eax,-0x4(%ebp)
+   0x080484f9 <+21>:	cmpl   $0x0,-0x4(%ebp)
+   0x080484fd <+25>:	jne    0x8048517 <read+51>
+   0x080484ff <+27>:	movl   $0x8048650,(%esp)
+   0x08048506 <+34>:	call   0x80483f0 <puts@plt>
+   0x0804850b <+39>:	movl   $0x1,(%esp)
+   0x08048512 <+46>:	call   0x8048410 <exit@plt>
+   0x08048517 <+51>:	mov    0x804a024,%eax
+   0x0804851c <+56>:	mov    %eax,0x8(%esp)
+   0x08048520 <+60>:	movl   $0x40,0x4(%esp)
+   0x08048528 <+68>:	mov    -0x4(%ebp),%eax
+   0x0804852b <+71>:	mov    %eax,(%esp)
+   0x0804852e <+74>:	call   0x80483d0 <fgets@plt>
+   0x08048533 <+79>:	mov    -0x4(%ebp),%eax
+   0x08048536 <+82>:	leave  
+   0x08048537 <+83>:	ret    
+End of assembler dump.
+Breakpoint 1 at 0x804855a: file readIntoHeap.c, line 25.
+
+Breakpoint 1, main (argc=1, argv=0xbffff764) at readIntoHeap.c:25
+25	    printf("\n%sby %s", song, band);
+$1 = 0x804b008 "The Past is a Grotesque Animal\n"
+$2 = 0x804b050 "of Montreal\n"
+
+They point to different spots. Notice the addresses, not stack:
+0xbffff6c0:	0x0804b008
+0xbffff6c4:	0x0804b050
+
+It works!

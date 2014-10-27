@@ -1,0 +1,19 @@
+set logging file readIntoHeap-gdb-output.txt
+set logging overwrite on
+set logging on
+
+disas main
+disas read
+
+break readIntoHeap.c:25
+
+run
+
+print song
+print band
+
+echo \nThey point to different spots. Notice the addresses, not stack:\n
+x/1wx &song
+x/1wx &band
+
+echo \nIt works!\n

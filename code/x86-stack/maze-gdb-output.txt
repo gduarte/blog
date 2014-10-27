@@ -1,0 +1,80 @@
+Breakpoint 1 at 0x80483d7: file maze.c, line 13.
+
+Breakpoint 1, explore (node=0x804a080) at maze.c:13
+13	        return 1; // found cheese
+2: $ebp = (void *) 0xbffff688
+1: $esp = (void *) 0xbffff680
+
+Inspect the stack frames:
+
+#0  explore (node=0x804a080) at maze.c:13
+#1  0x080483ec in explore (node=0x804a090) at maze.c:16
+#2  0x080483ec in explore (node=0x804a0a0) at maze.c:16
+#3  0x080483fe in explore (node=0x804a0b0) at maze.c:16
+#4  0x080483fe in explore (node=0x804a0c0) at maze.c:16
+#5  0x08048428 in main (argc=1) at maze.c:22
+
+Let's see where our mouse has been:
+$1 = {hasCheese = 1, tag = 11, left = 0x0, right = 0x0}
+$2 = {hasCheese = 0, tag = 10, left = 0x804a080, right = 0x0}
+$3 = {hasCheese = 0, tag = 9, left = 0x804a090, right = 0x804a0d8}
+$4 = {hasCheese = 0, tag = 7, left = 0x804a070, right = 0x804a0a0}
+$5 = {hasCheese = 0, tag = 0, left = 0x804a060, right = 0x804a0b0}
+
+Inspect stack contents as words. These are converted little-endian
+from individual bytes into 4-byte numbers:
+
+0xbffff680:	0xbffff890	0x00000000	0xbffff698	0x080483ec
+0xbffff690:	0x0804a080	0x00000000	0xbffff6a8	0x080483ec
+0xbffff6a0:	0x0804a090	0x00000000	0xbffff6b8	0x080483fe
+0xbffff6b0:	0x0804a0a0	0x00000000	0xbffff6c8	0x080483fe
+0xbffff6c0:	0x0804a0b0	0x00000000	0xbffff6d8	0x08048428
+0xbffff6d0:	0x0804a0c0	0x00000000	0x00000000	0xb7e454d3
+0xbffff6e0:	0x00000001
+
+And here is assembly code for main and explore:
+Dump of assembler code for function main:
+   0x08048416 <+0>:	push   %ebp
+   0x08048417 <+1>:	mov    %esp,%ebp
+   0x08048419 <+3>:	sub    $0x8,%esp
+   0x0804841c <+6>:	movl   $0x804a0c0,(%esp)
+   0x08048423 <+13>:	call   0x80483b4 <explore>
+   0x08048428 <+18>:	mov    %eax,-0x4(%ebp)
+   0x0804842b <+21>:	leave  
+   0x0804842c <+22>:	ret    
+End of assembler dump.
+Dump of assembler code for function explore:
+   0x080483b4 <+0>:	push   %ebp
+   0x080483b5 <+1>:	mov    %esp,%ebp
+   0x080483b7 <+3>:	sub    $0x8,%esp
+   0x080483ba <+6>:	movl   $0x0,-0x4(%ebp)
+   0x080483c1 <+13>:	cmpl   $0x0,0x8(%ebp)
+   0x080483c5 <+17>:	jne    0x80483ce <explore+26>
+   0x080483c7 <+19>:	mov    $0x0,%eax
+   0x080483cc <+24>:	jmp    0x8048414 <explore+96>
+   0x080483ce <+26>:	mov    0x8(%ebp),%eax
+   0x080483d1 <+29>:	mov    (%eax),%eax
+   0x080483d3 <+31>:	test   %eax,%eax
+   0x080483d5 <+33>:	je     0x80483de <explore+42>
+=> 0x080483d7 <+35>:	mov    $0x1,%eax
+   0x080483dc <+40>:	jmp    0x8048414 <explore+96>
+   0x080483de <+42>:	mov    0x8(%ebp),%eax
+   0x080483e1 <+45>:	mov    0x8(%eax),%eax
+   0x080483e4 <+48>:	mov    %eax,(%esp)
+   0x080483e7 <+51>:	call   0x80483b4 <explore>
+   0x080483ec <+56>:	test   %eax,%eax
+   0x080483ee <+58>:	jne    0x8048402 <explore+78>
+   0x080483f0 <+60>:	mov    0x8(%ebp),%eax
+   0x080483f3 <+63>:	mov    0xc(%eax),%eax
+   0x080483f6 <+66>:	mov    %eax,(%esp)
+   0x080483f9 <+69>:	call   0x80483b4 <explore>
+   0x080483fe <+74>:	test   %eax,%eax
+   0x08048400 <+76>:	je     0x8048409 <explore+85>
+   0x08048402 <+78>:	mov    $0x1,%eax
+   0x08048407 <+83>:	jmp    0x804840e <explore+90>
+   0x08048409 <+85>:	mov    $0x0,%eax
+   0x0804840e <+90>:	mov    %eax,-0x4(%ebp)
+   0x08048411 <+93>:	mov    -0x4(%ebp),%eax
+   0x08048414 <+96>:	leave  
+   0x08048415 <+97>:	ret    
+End of assembler dump.

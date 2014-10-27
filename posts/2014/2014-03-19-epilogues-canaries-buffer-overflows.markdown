@@ -30,7 +30,15 @@ int main(int argc)
 We're executing line 4, right after the assignment of `a + b` into `result`. This is
 what happens:
 
-{% img /img/stack/returnFromAdd.png %}
+<img id="returnFromAdd" class="center" src="/img/stack/returnFromAdd.png"
+usemap="#mapreturnFromAdd">
+<map id="mapreturnFromAdd">
+<area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L156'>
+<area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L162'>
+<area shape='poly' coords='754,618,754,924,6,924,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L162'>
+<area shape='poly' coords='754,924,754,1234,6,1234,6,924' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L162'>
+</map>
+
 
 The first instruction is redundant and a little silly because we know `eax` is
 already equal to `result`, but this is what you get with optimization turned
@@ -47,14 +55,21 @@ instruction takes care of it: it pops the return address into the `eip`
 register, which points to the next instruction to be executed.  The program has
 now returned to main, which resumes:
 
-{% img /img/stack/returnFromMain.png %}
+<img id="returnFromMain" class="center" src="/img/stack/returnFromMain.png"
+usemap="#mapreturnFromMain">
+<map id="mapreturnFromMain">
+<area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L175'>
+<area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L181'>
+<area shape='poly' coords='754,618,754,924,6,924,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L181'>
+<area shape='poly' coords='754,924,754,1234,6,1234,6,924' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L181'>
+</map>
 
 `main` copies the return value from `add` into local variable `answer` and then
 runs its own epilogue, which is identical to any other. Again the only
 peculiarity in `main` is that the saved ebp is null, since it is the first stack
 frame in our code. In the last step, execution has been returned to the
 C runtime (`libc`), which will exit to the operating system. Here's a diagram
-with the [full return sequence](/img/stack/fullReturnSequence.png) for those
+with the [full return sequence](/img/stack/returnSequence.png) for those
 who need it.
 
 You now have an excellent grasp of how the stack operates, so let's have some

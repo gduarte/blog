@@ -1,0 +1,127 @@
+set logging file add-gdb-output.txt
+set logging overwrite on
+set logging on
+
+echo # break at main's prolog\n
+break *main
+
+echo # also, let's print esp and ebp every time we run\n
+display $esp
+display $ebp
+ 
+echo # go\n
+run
+
+echo # call   main\n
+disas
+echo \n# let's inspect the stack memory, as bytes, like the diagrams show\n
+x/8bx $esp
+
+echo \n# we can also show contents as 4-byte words\n
+x/2wx $esp
+
+echo \n# let's find out where we're returning into:\n
+info symbol * (int *) $esp
+echo \n
+
+echo # push   %ebp\n
+stepi
+echo # stack:\n
+x/3wx $esp
+echo \n\n
+
+echo # mov    %esp,%ebp\n
+stepi
+echo \n\n
+
+echo # sub    $0xc,%esp\n
+stepi
+echo # stack:\n
+x/6wx $esp
+echo \n\n
+
+
+echo # movl   $0x2,0x4(%esp)\n
+stepi
+echo # stack:\n
+x/6wx $esp
+echo \n\n
+
+
+echo # movl   $0x28,(%esp)\n
+stepi
+echo # stack:\n
+x/6wx $esp
+echo \n\n
+
+
+echo # call   0x80483b4 <add>\n
+stepi
+disas
+echo # stack:\n
+x/7wx $esp
+echo \n\n
+
+echo # => push   %ebp\n
+stepi
+echo # stack:\n
+x/8wx $esp
+echo \n\n
+
+
+echo # mov    %esp,%ebp\n
+stepi
+echo \n\n
+
+echo # sub    $0x4,%esp\n
+stepi
+echo # stack:\n
+x/9wx $esp
+echo \n\n
+
+echo # mov    0xc(%ebp),%eax\n
+stepi
+echo \n\n
+
+echo # mov    0x8(%ebp),%edx\n
+stepi
+echo \n\n
+
+echo # add    %edx,%eax\n
+stepi
+echo \n\n
+
+echo # mov    %eax,-0x4(%ebp)\n
+stepi
+echo # stack:\n
+x/9wx $esp
+echo \n# and here is the stack byte-for-byte, as the diagram shows, without\n
+echo \n# little-endian conversion into words:\n
+x/36bx $esp
+echo \n\n
+
+echo # mov    -0x4(%ebp),%eax\n
+stepi
+echo \n\n
+
+echo # leave\n
+stepi
+echo \n\n
+
+echo # ret\n
+stepi
+echo \n\n
+
+echo # mov    %eax,-0x4(%ebp)\n
+stepi
+echo \n\n
+
+echo # leave\n
+stepi
+echo \n\n
+
+echo # ret\n
+stepi
+echo \nOur code is done. Stack is down to argc only:\n
+x/1wx $esp
+echo \n\n And that's it. Hope you enjoyed the byte spelunking :)

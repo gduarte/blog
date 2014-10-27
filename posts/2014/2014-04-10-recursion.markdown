@@ -71,7 +71,7 @@ just another data structure at your disposal. I hope the diagram makes that
 clear.
 
 Once you see the call stack as a data structure, something else becomes clear:
-piling up all those integers to multiply them afterwards is one dumb-ass idea.
+piling up all those integers to multiply them afterwards is *one dumbass idea*.
 _That_ is the real lameness of this implementation: it's using a screwdriver to
 hammer a nail. It's far more sensible to use an iterative process to calculate
 factorials.
@@ -96,7 +96,9 @@ or another data structure.  But using the call stack is just _so easy_:
 
 {% include_code Recursive Maze Solver x86-stack/maze.c %}
 
-Here's what the stack [looks like][maze-gdb] when we find the cheese in maze.c:12:
+Below is the stack when we find the cheese in maze.c:13. You can also
+see the detailed [GDB output][maze-gdb-output] and [commands][maze-gdb-commands]
+used to gather data.
 
 {% img center /img/stack/mazeCallStack.png %}
 
@@ -161,8 +163,9 @@ kernel. Thanks for reading!
 [factorial512k]: https://gist.github.com/gduarte/9944878
 [while-you-wait]: /post/what-your-computer-does-while-you-wait/
 [maze.h]: https://github.com/gduarte/lkb/blob/master/code/stack/maze.h
-[maze-gdb]: https://github.com/gduarte/lkb/blob/master/code/stack/maze-gdb.txt
-[factorial-gdb]: https://github.com/gduarte/lkb/blob/master/code/stack/factorial-gdb.txt
+[maze-gdb-output]: https://github.com/gduarte/lkb/blob/master/code/stack/maze-gdb-output.txt
+[maze-gdb-commands]: https://github.com/gduarte/lkb/blob/master/code/stack/maze-gdb-commands.txt
+[factorial-gdb]: https://github.com/gduarte/lkb/blob/master/code/stack/factorial-gdb-output.txt
 [performance]: /post/performance-is-a-science
 [adm]: http://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/
 [fib]: http://stackoverflow.com/questions/360748/computational-complexity-of-fibonacci-sequence

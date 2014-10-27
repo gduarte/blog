@@ -10,10 +10,10 @@ categories:
 ---
 Earlier we've explored the [anatomy of a program in memory][anatomy], the
 landscape of how our programs run in a computer. Now we turn to the *call
-stack*, the work horse in most programming languages and virtual machines, to
-examine it in detail. Along the way we'll meet fantastic creatures like
-closures, recursion, and buffer overflows. But the first step is a precise
-picture of how the stack operates.
+stack*, the work horse in most programming languages and virtual machines.
+Along the way we'll meet fantastic creatures like closures, recursion, and
+buffer overflows. But the first step is a precise picture of how the stack
+operates.
 
 The stack is so important because it keeps track of the *functions* running in
 a program, and functions are in turn the building blocks of software.  In fact,
@@ -25,12 +25,12 @@ languages like JavaScript and C#. A solid grasp of this reality is invaluable
 for debugging, performance tuning and generally knowing what the hell is going
 on.
 
-When a function is called, a **stack frame** is created to support the function's
-execution. The stack frame contains the function's *local variables* and the
-*arguments* passed to the function by its caller. The frame also contains
-housekeeping information that allows the called function (the *callee*) to
-return to the caller safely.  The exact contents and layout of the stack vary by
-processor architecture and function call convention. In this post we look at
+When a function is called, a **stack frame** is created to support the
+function's execution. The stack frame contains the function's *local variables*
+and the *arguments* passed to the function by its caller. The frame also
+contains housekeeping information that allows the called function (the *callee*)
+to return to the caller safely.  The exact contents and layout of the stack vary
+by processor architecture and function call convention. In this post we look at
 Intel x86 stacks using C-style function calls (`cdecl`). Here's a single stack
 frame sitting live on top of the stack:
 
@@ -110,7 +110,7 @@ Now let's see the birth of a stack frame to build a clear mental picture of how
 this all works together. Stack growth is puzzling at first because it happens
 *in the opposite direction* you'd expect. For example, to allocate 8 bytes on
 the stack one *subtracts* 8 from `esp`, and subtraction is an odd way to grow
-something. So a stack overflow is, really, an underflow. Fun stuff!
+something.
 
 Let's take a simple C program:
 
@@ -129,11 +129,19 @@ int main(int argc)
 {% endcodeblock %}
 
 Suppose we run this in Linux without command-line parameters.  When you run
-a C program, the first code to actually execute is in the C runtime library. The
-library code calls our `main()` function, in this case with 0 for argc (no
-parameters). As libc calls `main`, this is what happens:
+a C program, the first code to actually execute is in the C runtime library,
+which then calls our `main` function. The diagrams below show step-by-step what
+happens as the program runs. Each diagram links to GDB output showing the state
+of memory and registers. You may also see the [GDB commands] used and the whole
+[GDB output]. Here we go:
 
-{% img /img/stack/mainProlog.png %}
+<img id="mainProlog" class="center" src="/img/stack/mainProlog.png"
+usemap="#mapMainProlog">
+<map id="mapMainProlog">
+<area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L10'>
+<area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L32'>
+<area shape='poly' coords='754,618,754,928,6,928,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L40'>
+</map>
 
 Steps 2 and 3, along with 4 below, are the **function prologue**, which is
 common to nearly all functions: the current value of ebp is saved to the top of
@@ -147,14 +155,26 @@ traditional C `argv`), plus pointers to Unix environment variables and their
 actual contents. But that's not important here, so the ball keeps rolling
 towards the `add()` call:
 
-{% img /img/stack/callAdd.png %}
+<img id="callAdd" class="center" src="/img/stack/callAdd.png"
+usemap="#mapCallAdd">
+<map id="mapCallAdd">
+<area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L46'>
+<area shape='poly' coords='754,312,754,642,6,642,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L55'>
+<area shape='poly' coords='754,642,754,952,6,952,6,642' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L73'>
+</map>
 
 After `main` subtracts 12 from `esp` to get the stack space it needs, it sets
 the values for `a` and `b`. Values in memory are shown in hex and little-endian
 format, as you'd see in a debugger. Once parameter values are set, `main` calls
 `add` and it starts running:
 
-{% img /img/stack/addProlog.png %}
+<img id="addProlog" class="center" src="/img/stack/addProlog.png"
+usemap="#mapaddProlog">
+<map id="mapaddProlog">
+<area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L95'>
+<area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L104'>
+<area shape='poly' coords='754,618,754,928,6,928,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L110'>
+</map>
 
 Now there's some excitement! We get another prologue, but this time you can see
 clearly how the stack frames form a linked list, starting at `ebp` and going
@@ -174,14 +194,19 @@ picture of what you find in the trenches, so there you have it.
 
 With the hard part behind us, we add:
 
-{% img /img/stack/doAdd.png %}
+<img id="doAdd" class="center" src="/img/stack/doAdd.png"
+usemap="#mapdoAdd">
+<map id="mapdoAdd">
+<area shape='poly' coords='754,6,754,360,6,360,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L120'>
+<area shape='poly' coords='754,360,754,670,6,670,6,360' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L138'>
+</map>
 
 There are guest register appearances to help out with the addition, but
 otherwise no alarms and no surprises. `add` did its job, and at this point the
 stack action would go in reverse, but we'll save that for next time.
 
 Anybody who's read this far deserves a souvenir, so I've made a large diagram
-showing [all the steps combined](/img/stack/fullSequence.png) in a fit of
+showing [all the steps combined](/img/stack/callSequence.png) in a fit of
 nerd pride.
 
 It looks tame once it's all laid out. Those little boxes help *a lot*. In fact,
@@ -195,3 +220,5 @@ spelunking ahead, and then it's on to see higher level programming concepts
 built on this foundation. See you next week.
 
 [anatomy]: /post/anatomy-of-a-program-in-memory "Anatomy of a Program in Memory"
+[GDB commands]: https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-commands.txt
+[GDB output]: https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt
