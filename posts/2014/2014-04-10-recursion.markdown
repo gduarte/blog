@@ -162,10 +162,10 @@ kernel. Thanks for reading!
 [thesis]: http://www.complang.tuwien.ac.at/schani/diplarb.ps
 [factorial512k]: https://gist.github.com/gduarte/9944878
 [while-you-wait]: /post/what-your-computer-does-while-you-wait/
-[maze.h]: https://github.com/gduarte/lkb/blob/master/code/stack/maze.h
-[maze-gdb-output]: https://github.com/gduarte/lkb/blob/master/code/stack/maze-gdb-output.txt
-[maze-gdb-commands]: https://github.com/gduarte/lkb/blob/master/code/stack/maze-gdb-commands.txt
-[factorial-gdb]: https://github.com/gduarte/lkb/blob/master/code/stack/factorial-gdb-output.txt
+[maze.h]: https://github.com/gduarte/blog/blob/master/code/x86-stack/maze.h
+[maze-gdb-output]: https://github.com/gduarte/blog/blob/master/code/x86-stack/maze-gdb-output.txt
+[maze-gdb-commands]: https://github.com/gduarte/blog/blob/master/code/x86-stack/maze-gdb-commands.txt
+[factorial-gdb]: https://github.com/gduarte/blog/blob/master/code/x86-stack/factorial-gdb-output.txt
 [performance]: /post/performance-is-a-science
 [adm]: http://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/
 [fib]: http://stackoverflow.com/questions/360748/computational-complexity-of-fibonacci-sequence

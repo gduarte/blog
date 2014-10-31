@@ -137,7 +137,7 @@ of memory and registers. You may also see the [GDB commands] used and the whole
 
 <img id="mainProlog" class="center" src="/img/stack/mainProlog.png"
 usemap="#mapMainProlog">
-<map id="mapMainProlog">
+<map id="mapMainProlog" name="mapMainProlog">
 <area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L10'>
 <area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L32'>
 <area shape='poly' coords='754,618,754,928,6,928,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L40'>
@@ -157,7 +157,7 @@ towards the `add()` call:
 
 <img id="callAdd" class="center" src="/img/stack/callAdd.png"
 usemap="#mapCallAdd">
-<map id="mapCallAdd">
+<map id="mapCallAdd" name="mapCallAdd">
 <area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L46'>
 <area shape='poly' coords='754,312,754,642,6,642,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L55'>
 <area shape='poly' coords='754,642,754,952,6,952,6,642' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L73'>
@@ -170,7 +170,7 @@ format, as you'd see in a debugger. Once parameter values are set, `main` calls
 
 <img id="addProlog" class="center" src="/img/stack/addProlog.png"
 usemap="#mapaddProlog">
-<map id="mapaddProlog">
+<map id="mapaddProlog" name="mapaddProlog">
 <area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L95'>
 <area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L104'>
 <area shape='poly' coords='754,618,754,928,6,928,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L110'>
@@ -196,7 +196,7 @@ With the hard part behind us, we add:
 
 <img id="doAdd" class="center" src="/img/stack/doAdd.png"
 usemap="#mapdoAdd">
-<map id="mapdoAdd">
+<map id="mapdoAdd" name="mapdoAdd">
 <area shape='poly' coords='754,6,754,360,6,360,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L120'>
 <area shape='poly' coords='754,360,754,670,6,670,6,360' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L138'>
 </map>

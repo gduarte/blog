@@ -32,7 +32,7 @@ what happens:
 
 <img id="returnFromAdd" class="center" src="/img/stack/returnFromAdd.png"
 usemap="#mapreturnFromAdd">
-<map id="mapreturnFromAdd">
+<map id="mapreturnFromAdd" name="mapreturnFromAdd">
 <area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L156'>
 <area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L162'>
 <area shape='poly' coords='754,618,754,924,6,924,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L162'>
@@ -57,7 +57,7 @@ now returned to main, which resumes:
 
 <img id="returnFromMain" class="center" src="/img/stack/returnFromMain.png"
 usemap="#mapreturnFromMain">
-<map id="mapreturnFromMain">
+<map id="mapreturnFromMain" name="mapreturnFromMain">
 <area shape='poly' coords='754,6,754,312,6,312,6,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L175'>
 <area shape='poly' coords='754,312,754,618,6,618,6,312' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L181'>
 <area shape='poly' coords='754,618,754,924,6,924,6,618' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/add-gdb-output.txt#L181'>

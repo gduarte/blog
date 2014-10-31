@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Closures, Objects, and the Fauna of the Heap"
-date: 2014-10-27 08:00:00 -0600
-comments: false
+date: 2014-10-27 07:40:00 -0600
+comments: true
 categories: 
 - Software Illustrated
 - Internals
@@ -42,7 +42,7 @@ name, the stack is thus:
 
 <img id="readSong" class="center" src="/img/stack/readSong.png"
 usemap="#mapreadSong">
-<map id="mapreadSong">
+<map id="mapreadSong" name="mapreadSong">
 <area shape='poly' coords='754,6,754,86,14,86,14,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/stackFolly-gdb-output.txt#L47'>
 <area shape='poly' coords='754,146,754,226,114,226,114,146' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/stackFolly-gdb-output.txt#L70'>
 </map>
@@ -54,7 +54,7 @@ the same stack frame layout, so the result is this:
 
 <img id="readBand" class="center" src="/img/stack/readBand.png"
 usemap="#mapreadBand">
-<map id="mapreadBand">
+<map id="mapreadBand" name="mapreadBand">
 <area shape='poly' coords='754,6,754,86,14,86,14,6' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/stackFolly-gdb-output.txt#L76'>
 <area shape='poly' coords='754,146,754,226,114,226,114,146' href='https://github.com/gduarte/blog/blob/master/code/x86-stack/stackFolly-gdb-output.txt#L79'>
 </map>
@@ -98,7 +98,7 @@ This might produce the following:
 
 <img id="fnFrame" class="center" src="/img/stack/fnFrame.png"
 usemap="#mapFnFrame">
-<map id="mapFnFrame">
+<map id="mapFnFrame" name="mapFnFrame">
 <area shape='poly' coords='524,36,524,116,424,116,424,36' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#1671'>
 <area shape='poly' coords='722,36,722,116,622,116,622,36' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#8656'>
 <area shape='poly' coords='514,176,514,256,434,256,434,176' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#1264'>
@@ -173,14 +173,14 @@ keeps working, *something funny* is going on. Enter the closure:
 
 <img id="closure" class="center" src="/img/stack/closure.png"
 usemap="#mapClosure">
-<map id="mapClosure">
+<map id="mapClosure" name="mapClosure">
 <area shape='poly' coords='260,36,260,126,80,126,80,36' href='https://code.google.com/p/v8/source/browse/trunk/src/contexts.h#188'>
 <area shape='poly' coords='681,36,681,126,321,126,321,36' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#7245'>
 </map>
 
 The VM allocated an object to store the parent variable used by the inner
 `greet()`. It's as if `makeGreeter`'s lexical scope had been **closed over** at
-that moment, crystalized into a heap object for as long as needed (in this case,
+that moment, crystallized into a heap object for as long as needed (in this case,
 the lifetime of the returned function).  Hence the name **closure**, which makes
 a lot of sense when you see it that way. If more parent variables had been used
 (or *captured*), the `Context` object would have more properties, one per
@@ -196,7 +196,7 @@ function makeGreeter(greetings)
     var greeter = {};
 
     for (var i = 0; i < greetings.length; i++) {
-        greeting = greetings[i];
+        var greeting = greetings[i];
 
         greeter[greeting] = function(name) {
             count++;
@@ -221,7 +221,7 @@ over into a heap object, the *values* taken by the variables (or object
 properties) can still be changed. Here's what we have:
 
 <img id="greeterFail" class="center" src="/img/stack/greeterFail.png" usemap="#mapGreeterFail">
-<map id="mapGreeterFail">
+<map id="mapGreeterFail" name="mapGreeterFail">
 <area shape='poly' coords='118,186,118,326,18,326,18,186' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#1671'>
 <area shape='poly' coords='510,36,510,146,170,146,170,36' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#7245'>
 <area shape='poly' coords='510,156,510,266,170,266,170,156' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#7245'>
@@ -261,11 +261,11 @@ greeter.hello('darling'); // prints "hello, darling"
 greeter.count(); // returns 2
 {% endcodeblock %}
 
-It now works, and the the result becomes:
+It now works, and the result becomes:
 
 <img id="greeter" class="center" src="/img/stack/greeter.png"
 usemap="#mapGreeter">
-<map id="mapGreeter">
+<map id="mapGreeter" name="mapGreeter">
 <area shape='poly' coords='118,146,118,286,18,286,18,146' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#1671'>
 <area shape='poly' coords='290,36,290,116,170,116,170,36' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#7245'>
 <area shape='poly' coords='290,126,290,206,170,206,170,126' href='https://code.google.com/p/v8/source/browse/trunk/src/objects.h#7245'>
@@ -298,7 +298,7 @@ pointers and corrections are welcome. If you know C#, inspecting the IL code
 emitted for closures is enlightening - you will see the analog of V8 Contexts
 explicitly defined and instantiated.
 
-Closures are powerful beasts. They provide a succint way to hide information
+Closures are powerful beasts. They provide a succinct way to hide information
 from a caller while sharing it among a set of functions.  I love that they
 **truly hide** your data: unlike object fields, callers cannot access or even
 *see* closed-over variables. Keeps the interface cleaner and safer.
