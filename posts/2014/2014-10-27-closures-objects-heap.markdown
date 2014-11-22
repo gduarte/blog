@@ -18,7 +18,7 @@ reads a song and a band name and outputs them back to the user:
 
 If you run this gem, here's what you get (=> denotes program output):
 
-{% codeblock lang:bash %}
+{% codeblock lang:console %}
 ./stackFolly
 => Enter song, then band:
 The Past is a Grotesque Animal

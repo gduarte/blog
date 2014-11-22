@@ -59,7 +59,7 @@ while (1) {
 }
 {% endcodeblock %}
 
-I've omitted many details, and we'll look at task switching in detail later on,
+I've omitted many details, and we'll look at task switching closely later on,
 but if you read the code you'll get the gist of it: as long as there's no need
 to reschedule, meaning change the active task, stay idle. Measured in elapsed
 time, this loop and its cousins in other OSes are probably the most executed
