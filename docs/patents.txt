@@ -1,0 +1,43 @@
+https://www.google.com/patents/WO2013162523A1 - Intel
+    Dynamic interrupt reconfiguration for effective power management
+
+    Publication date	Oct 31, 2013
+    Filing date	Apr 24, 2012
+    Priority date	Apr 24, 2012 
+
+https://www.google.com/patents/US6813665 - Intel
+    Interrupt method, system and medium
+
+    An interrupt method, system, and/or medium may comprise generating a load
+    balancing value that helps balance servicing of interrupts among processors.
+
+    Publication date	Nov 2, 2004
+    Filing date	Sep 21, 2001
+    Priority date	Sep 21, 2001
+
+https://www.google.com/patents/US7496706 - Intel
+    Message signaled interrupt redirection table
+
+    In some embodiments, the inventions include a chip having a message signaled
+    interrupt redirection table (MRT) that contains entries including an address
+    field and a data field. (...)
+
+    Publication date	Feb 24, 2009
+    Filing date	Jun 30, 2004
+    Priority date	Jun 30, 2004
+
+https://www.google.com/patents/US6470408 - HP
+    Apparatus and method for delivering interrupts via an APIC bus to IA-32
+    processors
+
+    Publication date	Oct 22, 2002
+    Filing date	Apr 14, 1999
+    Priority date	Apr 14, 1999
+
+https://www.google.com/patents/US5857090 - Intel
+    Input/output subsystem having an integrated advanced programmable interrupt
+    controller for use in a personal computer
+
+    Publication date	Jan 5, 1999
+    Filing date	Dec 29, 1995
+    Priority date	Dec 29, 1995
