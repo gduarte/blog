@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>!Home Row Computing</name>
+    <identifier>home.row.computing</identifier>
+    <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+
+    <!-- Vim-style arrow navigation -->
+    <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+
+    <!-- Easy delete (backspace in PC) and forward delete -->
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+
+    <!-- Special Keys -->
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA1, KeyCode::ESCAPE</autogen>
+
+    <!-- Moom -->
+    <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::EXTRA1, KeyCode::M,
+        ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L | ModifierFlag::FN</autogen>
+
+    <!-- Moom: move window to next monitor -->
+    <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::N, ModifierFlag::CONTROL_L
+        | ModifierFlag::COMMAND_L | ModifierFlag::FN</autogen>
+  </item>
+</root>
