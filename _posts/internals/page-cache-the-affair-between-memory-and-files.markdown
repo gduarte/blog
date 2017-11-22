@@ -17,14 +17,14 @@ categories:
 - Internals
 tags: []
 ---
-Previously we looked at how the kernel [manages virtual memory](http://duartes.org/gustavo/blog/post/how-the-kernel-manages-your-memory)
+Previously we looked at how the kernel [manages virtual memory](post/how-the-kernel-manages-your-memory)
 for a user process, but files and I/O were left out. This post covers
 the important and often misunderstood relationship between files and
 memory and its consequences for performance.
 
 Two serious problems must be solved by the OS when it comes to files.  The first
 one is the mind-blowing slowness of hard drives, and 
-[disk seeks in particular](http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait),
+[disk seeks in particular](post/what-your-computer-does-while-you-wait),
 relative to memory. The second is the need to load file contents in physical
 memory once and *share* the contents among programs. If you use 
 [Process Explorer](http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx) to poke
@@ -63,7 +63,7 @@ analogous to pages in the Linux page cache.
 
 Sadly, in a regular file read the kernel must copy the contents of the
 page cache into a user buffer, which not only takes cpu time and hurts
-the [cpu caches](http://duartes.org/gustavo/blog/intel-cpu-caches), but
+the [cpu caches](post/intel-cpu-caches), but
 also **wastes physical memory with duplicate data**. As per the diagram
 above, the `scene.dat` contents are stored twice, and each instance of
 the program would store the contents an additional time. We've mitigated
@@ -81,15 +81,15 @@ reads, while similar figures are reported for Linux and Solaris in
 You might also save large amounts of physical memory, depending on the
 nature of your application.
 
-As always with performance, [measurement is everything](http://duartes.org/gustavo/blog/post/performance-is-a-science),
+As always with performance, [measurement is everything](post/performance-is-a-science),
 but memory mapping earns its keep in a programmer's toolbox. The API is
 pretty nice too, it allows you to access a file as bytes in memory and
 does not require your soul and code readability in exchange for its
-benefits. Mind your [address space](http://duartes.org/gustavo/blog/anatomy-of-a-program-in-memory)
+benefits. Mind your [address space](post/anatomy-of-a-program-in-memory)
 and experiment with
 [mmap](http://www.kernel.org/doc/man-pages/online/pages/man2/mmap.2.html)
 in Unix-like systems,
-[CreateFileMapping](http://msdn.microsoft.com/en-us/library/aa366537(VS.85).aspx)
+<a href="http://msdn.microsoft.com/en-us/library/aa366537(VS.85).aspx">CreateFileMapping</a>
 in Windows, or the many wrappers available in high level languages. When
 you map a file its contents are not brought into memory all at once, but
 rather on demand via [page faults](http://lxr.linux.no/linux+v2.6.28/mm/memory.c#L2678). The fault
@@ -133,13 +133,14 @@ kernel tune its eager loading behavior by providing hints on whether you
 plan to read a file sequentially or randomly (see
 [madvise()](http://www.kernel.org/doc/man-pages/online/pages/man2/madvise.2.html),
 [readahead()](http://www.kernel.org/doc/man-pages/online/pages/man2/readahead.2.html),
-[Windows cache hints](http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx#caching_behavior)).
+<a href="http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx#caching_behavior">Windows cache hints</a>
+).
 Linux [does read-ahead](http://lxr.linux.no/linux+v2.6.28/mm/filemap.c#L1424) for
 memory-mapped files, but I'm not sure about Windows. Finally, it's
 possible to bypass the page cache using
 [O\_DIRECT](http://www.kernel.org/doc/man-pages/online/pages/man2/open.2.html)
 in Linux or
-[NO\_BUFFERING](http://msdn.microsoft.com/en-us/library/cc644950(VS.85).aspx)
+<a href="http://msdn.microsoft.com/en-us/library/cc644950(VS.85).aspx">NO_BUFFERING</a>
 in Windows, something database software often does.
 
 A file mapping may be **private** or **shared**. This refers only to
