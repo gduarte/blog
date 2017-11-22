@@ -1,12 +1,11 @@
 ---
-layout: post
 title: "Recursion: dream within a dream"
 date: 2014-04-10 12:00:00 -0600
 comments: true
-categories: 
-- Software Illustrated
-- Internals
-- Programming
+categories:
+- [software illustrated]
+- [internals]
+- [programming]
 ---
 **Recursion** is magic, but it suffers from the most awkward introduction in
 programming books.  They'll show you a recursive factorial implementation, then
@@ -14,7 +13,7 @@ warn you that while it sort of works it's terribly slow and might crash due to
 stack overflows.  "You could always dry your hair by sticking your head
 into the microwave, but watch out for intracranial pressure and head explosions.
 Or you can use a towel." No wonder people are suspicious of it. Which is too
-bad, because **recursion is the single most powerful idea in algorithms**. 
+bad, because **recursion is the single most powerful idea in algorithms**.
 
 Let's take a look at the classic recursive factorial:
 
@@ -23,7 +22,7 @@ Let's take a look at the classic recursive factorial:
 
 int factorial(int n)
 {
-        int previous = 0xdeadbeef;      
+        int previous = 0xdeadbeef;
 
         if (n == 0 || n == 1) {
                 return 1;
@@ -50,7 +49,7 @@ Each call to `factorial` generates a new [stack frame][stack]. The creation and
 [destruction][epilogues] of these stack frames is what makes the recursive
 factorial slower than its iterative counterpart. The accumulation of these
 frames before the calls start returning is what can potentially exhaust stack
-space and crash your program. 
+space and crash your program.
 
 These concerns are often theoretical. For example, the stack frames for
 `factorial` take 16 bytes each (this can vary depending on stack alignment and

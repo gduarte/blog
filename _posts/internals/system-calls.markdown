@@ -1,13 +1,12 @@
 ---
-layout: post
 title: "System Calls Make the World Go Round"
 date: 2014-11-06 17:00:00 -0700
 comments: true
 published: true
-categories: 
-- Software Illustrated
-- Internals
-- Linux
+categories:
+- [software illustrated]
+- [internals]
+- [linux]
 ---
 
 I hate to break it to you, but a user application is a helpless brain in a vat:
@@ -42,7 +41,7 @@ space maps the kernel itself.
 Below is the code for our program, `pid`, which simply retrieves its process id
 via [getpid(2)]:
 
-{% include_code pid x86-os/pid.c %}
+{% include_code x86-os/pid.c %}
 
 In Linux, a process isn't born knowing its PID. It must ask the kernel, so this
 requires a system call:
@@ -69,7 +68,7 @@ invocations.
 
 Once the wrapper has done its initial work it's time to jump into
 <del>hyperspace</del> the kernel.  The mechanics of this transition vary by
-processor architecture.  In Intel processors, arguments and the 
+processor architecture.  In Intel processors, arguments and the
 [syscall number][syscall_64.tbl-getpid] are [loaded into registers][x64-DO_CALL],
 then an [instruction][libc-syscall] is executed to put the CPU
 in [privileged mode][rings] and immediately transfer control to a global syscall
@@ -145,7 +144,7 @@ Process 12218 attached - interrupt to quit
 select(7, [3 4], NULL, NULL, NULL
 
 [
-  ... nothing happens ... 
+  ... nothing happens ...
   No fun, it's just waiting for a connection using select(2)
   If we wait long enough, we might see new keys being generated and so on, but
   let's attach again, tell strace to follow forks (-f), and connect via SSH
@@ -166,7 +165,6 @@ select(7, [3 4], NULL, NULL, NULL
 [pid 14692] stat64("/etc/pam.d", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
 [pid 14692] open("/etc/pam.d/common-password", O_RDONLY|O_LARGEFILE) = 8
 [pid 14692] open("/etc/pam.d/other", O_RDONLY|O_LARGEFILE) = 4
-
 {% endcodeblock %}
 
 SSH is a large chunk to bite off, but it gives a feel for strace usage.  Being
@@ -177,7 +175,6 @@ unexpectedly without a proper error message, check if a syscall failure explains
 it. You can also use filters, time each call, and so so:
 
 {% codeblock lang:console %}
-
 ~/code/x86-os$ strace -T -e trace=recv curl -silent www.google.com. > /dev/null
 
 recv(3, "HTTP/1.1 200 OK\r\nDate: Wed, 05 N"..., 16384, 0) = 4164 <0.000007>
@@ -187,7 +184,6 @@ recv(3, "gbar.up.spd(b,d,1,!0);break;case"..., 16384, 0) = 2776 <0.000006>
 recv(3, "$),a.i.G(!0)),window.gbar.up.sl("..., 16384, 0) = 1388 <0.000004>
 recv(3, "margin:0;padding:5px 8px 0 6px;v"..., 16384, 0) = 1388 <0.000007>
 recv(3, "){window.setTimeout(function(){v"..., 16384, 0) = 1484 <0.000006>
-
 {% endcodeblock %}
 
 I encourage you to explore these tools in your OS. Using them well is like
@@ -314,7 +310,7 @@ Atlético Mineiro.
 [rest_init]: https://github.com/torvalds/linux/blob/v3.17/init/main.c#L393
 [init_idle_bootup_task]: https://github.com/torvalds/linux/blob/v3.17/kernel/sched/core.c#L4538
 
-[cpuidle_idle_call]:https://github.com/torvalds/linux/blob/v3.17/kernel/sched/idle.c#L77 
+[cpuidle_idle_call]:https://github.com/torvalds/linux/blob/v3.17/kernel/sched/idle.c#L77
 [cpu_idle_loop]: https://github.com/torvalds/linux/blob/v3.17/kernel/sched/idle.c#L183
 [GetProcessId()]: http://msdn.microsoft.com/en-us/library/windows/desktop/ms683180%28v=vs.85%29.aspx
 [x86_halt]: https://github.com/torvalds/linux/blob/v3.17/arch/x86/include/asm/irqflags.h#L52

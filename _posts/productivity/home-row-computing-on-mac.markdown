@@ -4,8 +4,8 @@ title: "Home Row Computing on Macs"
 date: 2014-11-24 09:15:00 -0700
 comments: true
 published: true
-categories: 
-- Productivity
+categories:
+- productivity
 ---
 
 For a number of years I've configured my desktops so that most tasks can be done
@@ -41,7 +41,7 @@ get to window management in a moment. The first step is to set `Caps Lock` to
 {% img center /img/screenshots/disable-capslock.png %}
 
 Now we must remap the `Caps Lock` key code to something else. To do so, you need
-a small tool called [Seil](https://pqrs.org/osx/karabiner/seil.html.en) 
+a small tool called [Seil](https://pqrs.org/osx/karabiner/seil.html.en)
 ([open source](https://github.com/tekezo/Seil)). You can map `Caps Lock` to any
 other key, like `cmd` or `option`. So if you don't want to go all-out home row,
 you can still benefit from the remapping.
@@ -107,7 +107,7 @@ This is gold for large monitors like Apple Thunderbolts.
 I remap `Caps Lock` + `M` into the global Moom shortcut for painless activation.
 This allows me to set the shortcut itself to something bizarre that won't
 conflict with anything but would be a dog to type. Currently it's an
-improbable `Fn` + `Control` + `Command` + `M`. 
+improbable `Fn` + `Control` + `Command` + `M`.
 I also have `Caps Lock` + `N` activating a Moom command that cycles a window
 between my two monitors. Both of these shortcuts are in the keyboard map
 I provided.

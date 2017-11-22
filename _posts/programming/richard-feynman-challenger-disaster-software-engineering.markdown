@@ -8,8 +8,6 @@ author_login: gduarte
 author_email: gustavo-web@duartes.org
 author_url: http://duartes.org/gustavo/blog
 comments: false
-wordpress_id: 12
-wordpress_url: http://duartes.org/gustavo/blog/post.aspx?id=17ab51a7-3f90-4a28-b65e-c9488b1aaac4
 date: 2008-02-20 05:33:00.000000000 -07:00
 categories:
 - Programming
