@@ -1,0 +1,12 @@
+---
+layout: page
+title: "404 - ENOENT"
+date: 2014-03-08 13:53
+comments: false
+sharing: false
+footer: false
+---
+
+Page not found. You can check the [archives](/archives/) or the
+[front page](/).  Please [drop me a line](mailto:food4hackers@duartes.org) if I can help you find content or if you think
+something is amiss.
