@@ -1,12 +1,10 @@
 ---
-layout: post
-title: "Journey to the Stack, Part I"
+title: Journey to the Stack, Part I
 date: 2014-03-10 08:00:00 -0700
-published: true
 comments: true
-categories: 
-- Software Illustrated
-- Internals
+categories:
+- [software illustrated]
+- [internals]
 ---
 Earlier we've explored the [anatomy of a program in memory][anatomy], the
 landscape of how our programs run in a computer. Now we turn to the *call
@@ -213,7 +211,7 @@ It looks tame once it's all laid out. Those little boxes help *a lot*. In fact,
 little boxes are the chief tool of computer science. I hope the pictures and
 register movements provide an intuitive mental picture that integrates stack
 growth and memory contents. Up close, our software doesn't look too far from
-a simple Turing machine. 
+a simple Turing machine.
 
 This concludes the first part of our stack tour. There's some more byte
 spelunking ahead, and then it's on to see higher level programming concepts
