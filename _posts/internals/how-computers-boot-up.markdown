@@ -1,20 +1,10 @@
 ---
-layout: post
-status: publish
-published: true
 title: How Computers Boot Up
-author: Gustavo Duarte
-author_login: gduarte
-author_email: gustavo-web@duartes.org
-author_url: http://duartes.org/gustavo/blog
-wordpress_id: 21
-wordpress_url: http://duartes.org/gustavo/blog/?p=21
 comments: false
-date: 2008-06-05 11:40:31.000000000 -06:00
+date: 2008-06-05 11:40:31 -06:00
 categories:
-- Software Illustrated
-- Internals
-tags: []
+- [software illustrated]
+- [internals]
 ---
 The previous post described [motherboards and the memory map] [memory-map] in
 Intel computers to set the scene for the initial phases of boot.  Booting is an
