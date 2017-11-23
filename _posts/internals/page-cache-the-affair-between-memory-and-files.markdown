@@ -1,20 +1,11 @@
 ---
-layout: post
-status: publish
-published: true
 title: Page Cache, the Affair Between Memory and Files
-author: Gustavo Duarte
-author_login: gduarte
-author_email: gustavo-web@duartes.org
-author_url: http://duartes.org/gustavo/blog
-wordpress_id: 369
-wordpress_url: http://duartes.org/gustavo/blog/?p=369
-date: 2009-02-10 23:20:18.000000000 -07:00
+date: 2009-02-10 23:20:18 -07:00
 comments: false
 categories:
-- Linux
-- Software Illustrated
-- Internals
+- [software illustrated]
+- [internal]
+- [linux]
 ---
 Previously we looked at how the kernel [manages virtual memory](post/how-the-kernel-manages-your-memory)
 for a user process, but files and I/O were left out. This post covers

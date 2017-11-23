@@ -3,9 +3,8 @@ layout: post
 title: "Home Row Computing on Macs"
 date: 2014-11-24 09:15:00 -0700
 comments: true
-published: true
 categories:
-- productivity
+- [productivity]
 ---
 
 For a number of years I've configured my desktops so that most tasks can be done

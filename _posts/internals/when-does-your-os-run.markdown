@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "When Does Your OS Run?"
+title: When Does Your OS Run?
 date: 2014-10-28 08:00:00 -0600
 comments: true
 published: true
 categories: 
-- Software Illustrated
-- Internals
-- Linux
+- [software illustrated]
+- [internals]
+- [linux]
 ---
 
 Here's a question: in the time it takes you to read this sentence, has your OS

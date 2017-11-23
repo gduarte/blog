@@ -1,20 +1,10 @@
 ---
-layout: post
-status: publish
-published: true
 title: Motherboard Chipsets and the Memory Map
-author: Gustavo Duarte
-author_login: gduarte
-author_email: gustavo-web@duartes.org
-author_url: http://duartes.org/gustavo/blog
 comments: false
-wordpress_id: 22
-wordpress_url: http://duartes.org/gustavo/blog/?p=22
-date: 2008-06-04 13:00:06.000000000 -06:00
+date: 2008-06-04 13:00:06 -06:00
 categories:
-- Software Illustrated
-- Internals
-tags: []
+- [software illustrated]
+- [internals]
 ---
 I'm going to write a few posts about computer internals with the goal of
 explaining how modern kernels work. I hope to make them useful to

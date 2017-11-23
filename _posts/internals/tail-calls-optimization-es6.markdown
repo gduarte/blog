@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Tail Calls, Optimization, and ES6"
+title: Tail Calls, Optimization, and ES6
 date: 2014-05-23 05:00:00 -0600
 comments: true
-categories: 
-- Software Illustrated
-- Internals
-- Programming
+categories:
+- [software illustrated]
+- [internals]
+- [programming]
 ---
 
 In this penultimate post about the stack, we take a quick look at **tail
@@ -55,7 +55,7 @@ So, is line 11 a tail call? It's not, because of the multiplication by `n`
 afterwards. But if you're not used to optimizations, gcc's
 [result][factorial-o2] with [O2 optimization][O2] might shock you: not only it
 transforms `factorial` into a [recursion-free loop][factorial-loop], but the
-`factorial(5)` call is eliminated entirely and replaced by a 
+`factorial(5)` call is eliminated entirely and replaced by a
 [compile-time constant][factorial-120] of 120 (5! == 120).  This is why debugging optimized
 code can be hard sometimes. On the plus side, if you call this function it will
 use a single stack frame regardless of n's initial value.  Compiler algorithms

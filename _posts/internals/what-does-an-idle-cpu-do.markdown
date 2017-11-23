@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "What does an idle CPU do?"
+title: What does an idle CPU do?
 date: 2014-10-29 08:00:00 -0600
 comments: true
-published: true
-categories: 
-- Software Illustrated
-- Internals
-- Linux
+categories:
+- [software illustrated]
+- [internals]
+- [linux]
 ---
 
 In the [last post] I said the fundamental axiom of OS behavior is that *at any
@@ -69,7 +68,7 @@ traditionally meant running the [halt][x86_halt] instruction:
 {% codeblock lang:c native_halt %}
 static inline void native_halt(void)
 {
-	asm volatile("hlt": : :"memory");
+    asm volatile("hlt": : :"memory");
 }
 {% endcodeblock %}
 
@@ -158,7 +157,7 @@ this helps us build the picture of a running kernel. More next week, [RSS] and
 [rest_init]: https://github.com/torvalds/linux/blob/v3.17/init/main.c#L393
 [init_idle_bootup_task]: https://github.com/torvalds/linux/blob/v3.17/kernel/sched/core.c#L4538
 
-[cpuidle_idle_call]:https://github.com/torvalds/linux/blob/v3.17/kernel/sched/idle.c#L77 
+[cpuidle_idle_call]:https://github.com/torvalds/linux/blob/v3.17/kernel/sched/idle.c#L77
 [cpu_idle_loop]: https://github.com/torvalds/linux/blob/v3.17/kernel/sched/idle.c#L183
 [x86_halt]: https://github.com/torvalds/linux/blob/v3.17/arch/x86/include/asm/irqflags.h#L52
 [time]: https://github.com/torvalds/linux/blob/v3.17/arch/x86/kernel/time.c

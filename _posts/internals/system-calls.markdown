@@ -1,5 +1,5 @@
 ---
-title: "System Calls Make the World Go Round"
+title: System Calls Make the World Go Round
 date: 2014-11-06 17:00:00 -0700
 comments: true
 published: true

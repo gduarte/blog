@@ -1,19 +1,9 @@
 ---
-layout: post
-status: publish
-published: true
 title: Home Row Computing
-author: Gustavo Duarte
-author_login: gduarte
-author_email: gustavo-web@duartes.org
-author_url: http://duartes.org/gustavo/blog
-wordpress_id: 108
-wordpress_url: http://duartes.org/gustavo/blog/?p=108
-date: 2008-12-15 00:20:16.000000000 -07:00
+date: 2008-12-15 00:20:16 -07:00
 comments: false
 categories:
-- Productivity
-tags: []
+- [productivity]
 ---
 Update August, 2013: [Stick Shift](http://stickshift.cubicle6.com/) is a
 product that implements this on Windows.
@@ -24,7 +14,7 @@ home row (the 'asdf' row of keys). You can then use the arrow keys, page
 up/down, shortcuts, and more while in regular typing position. It works
 across applications, allowing you to type and move about much faster. I
 call it 'home row computing' and it's something I started doing after I
-learned [touch typing](http://duartes.org/gustavo/blog/post/switch-touch-typing-dvorak).
+learned touch typing.
 
 I'll explain the idea and give step-by-step instructions for Windows
 systems. The first step is to do what power users have done all along:
@@ -129,7 +119,6 @@ posted Vim-like bindings for qwerty
 comments for details. Thanks!
 
 **Update 3**: Paul has posted a Linux implementation of this in a
-[comment](http://duartes.org/gustavo/blog/post/home-row-computing/comment-page-1#comment-13209)
-below. Sweet.
+[comment](comments/home-row-computing.html) below. Sweet.
 
 [34 Comments](/comments/home-row-computing.html)
