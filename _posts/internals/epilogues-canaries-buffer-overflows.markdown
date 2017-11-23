@@ -2,7 +2,7 @@
 title: Epilogues, Canaries, and Buffer Overflows
 date: 2014-03-19 10:30:00 -0600
 comments: true
-categories: 
+categories:
 - [software illustrated]
 - [internals]
 ---
@@ -15,14 +15,14 @@ friend `add.c`:
 {% codeblock lang:c Simple Add Program - add.c %}
 int add(int a, int b)
 {
-	int result = a + b;
-	return result;
+    int result = a + b;
+    return result;
 }
 
 int main(int argc)
 {
-	int answer;
-	answer = add(40, 2);
+    int answer;
+    answer = add(40, 2);
 }
 {% endcodeblock %}
 
