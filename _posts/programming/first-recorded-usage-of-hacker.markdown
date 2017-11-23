@@ -1,19 +1,9 @@
 ---
-layout: post
-status: publish
-published: true
 title: First Recorded Usage of "Hacker"
-author: Gustavo Duarte
-author_login: gduarte
-author_email: gustavo-web@duartes.org
-author_url: http://duartes.org/gustavo/blog
 comments: false
-wordpress_id: 50
-wordpress_url: http://duartes.org/gustavo/blog/?p=50
-date: 2008-08-27 18:28:31.000000000 -06:00
+date: 2008-08-27 18:28:31 -06:00
 categories:
-- Culture
-tags: []
+- [culture]
 ---
 Here's the first known recorded usage of the word "hacker" in the tech sense, published in 1963 in MIT's The Tech newspaper:
 <p align="center"><img src="http://static.duartes.org/img/blogPosts/firstRecordedUsageOfHacker.png" alt="First recorded usage of hacker" /></p>

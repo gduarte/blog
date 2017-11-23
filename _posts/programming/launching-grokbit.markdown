@@ -3,9 +3,8 @@ layout: post
 title: "Grokbit"
 date: 2016-06-21 11:30:00 -0700
 comments: true
-published: true
 categories:
-- Programming
+- [programming]
 ---
 
 TLDR: I launched [Grokbit], a code search and browsing tool.
