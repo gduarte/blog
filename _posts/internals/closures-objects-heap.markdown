@@ -1,12 +1,11 @@
 ---
-layout: post
-title: "Closures, Objects, and the Fauna of the Heap"
+title: Closures, Objects, and the Fauna of the Heap
 date: 2014-10-27 07:40:00 -0600
 comments: true
-categories: 
-- Software Illustrated
-- Internals
-- Programming
+categories:
+- [software illustrated]
+- [internals]
+- [programming]
 ---
 
 The last post in this series looks at closures, objects, and other creatures
@@ -308,7 +307,7 @@ argue endlessly about their relative merits. Like most tech discussions, it's
 often more about ego than real tradeoffs. At any rate, this [epic koan][koan] by
 Anton van Straaten settles the issue:
 
-{% blockquote Anton van Straaten  http://people.csail.mit.edu/gregs/ll1-discuss-archive-html/msg03277.html What's so cool about Scheme? %}
+{% blockquote Anton van Straaten http://people.csail.mit.edu/gregs/ll1-discuss-archive-html/msg03277.html What's so cool about Scheme? %}
   The venerable master Qc Na was walking with his student, Anton.  Hoping to
 prompt the master into a discussion, Anton said "Master, I have heard that
 objects are a very good thing - is this true?"  Qc Na looked pityingly at
@@ -356,6 +355,6 @@ kernel is strong, so there's an OS post coming out tomorrow.  I invite you to
 [environment record]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-environment-records
 [v8-closures]: http://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html
 [egorov]: http://mrale.ph
-[jsperf-string]:http://jsperf.com/primitive-value-string-vs-wrapper-object-string-length/3 
+[jsperf-string]:http://jsperf.com/primitive-value-string-vs-wrapper-object-string-length/3
 [jsperf-number]: http://jsperf.com/primitive-numbers-vs-wrapped-numbers/2
 [es6-toprimitive]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-toprimitive

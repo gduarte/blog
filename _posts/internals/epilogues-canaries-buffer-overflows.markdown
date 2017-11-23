@@ -1,11 +1,10 @@
 ---
-layout: post
-title: "Epilogues, Canaries, and Buffer Overflows"
+title: Epilogues, Canaries, and Buffer Overflows
 date: 2014-03-19 10:30:00 -0600
 comments: true
 categories: 
-- Software Illustrated
-- Internals
+- [software illustrated]
+- [internals]
 ---
 
 Last week we looked at [how the stack works][stack] and how stack frames are

@@ -15,7 +15,6 @@ categories:
 - Linux
 - Software Illustrated
 - Internals
-tags: []
 ---
 Previously we looked at how the kernel [manages virtual memory](post/how-the-kernel-manages-your-memory)
 for a user process, but files and I/O were left out. This post covers

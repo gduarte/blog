@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: First Recorded Usage of &quot;Hacker&quot;
+title: First Recorded Usage of "Hacker"
 author: Gustavo Duarte
 author_login: gduarte
 author_email: gustavo-web@duartes.org
@@ -24,19 +24,24 @@ Most of what the article describes is now known as phone phreaking, though some 
 <p align="center"><img src="http://static.duartes.org/img/blogPosts/hacker.jpg" alt="A hacker" /> <span>
 Hacking</span>
 
-This of course doesn't "prove" that the black-hat meaning is the "true" meaning of hacker, just as "one who is employed doing mathematical calculations" is not the "true" meaning of computer. Language is fluid. The New Hacker's Dictionary has this to say in the word's <a href="http://www.ccil.org/jargon/jargon_23.html#TAG833">definition</a>:
-<blockquote><ol>
-<li>A person who enjoys exploring the details of programmable systems and how to stretch their capabilities, as opposed to most users, who prefer to learn only the minimum necessary.</li>
+This of course doesn't "prove" that the black-hat meaning is the "true" meaning
+of hacker, just as "one who is employed doing mathematical calculations" is not
+the "true" meaning of computer. Language is fluid. The New Hacker's Dictionary
+has this to say in the word's [definition](http://catb.org/jargon/html/H/hacker.html):
+
+{% raw %}
+<blockquote><ol><li>A person who enjoys exploring the details of programmable systems and how to stretch their capabilities, as opposed to most users, who prefer to learn only the minimum necessary.</li>
 <li>One who programs enthusiastically (even obsessively) or who enjoys programming rather than just theorizing about programming. (...)</li>
 <li>[deprecated] A malicious meddler who tries to discover sensitive information by poking around. Hence "password hacker", "network hacker". The correct term for this sense is cracker.</li>
 </ol></blockquote>
+{% endraw %}
 The white-hat definitions are popular among geeks, but I'm not so sure about the deprecation. For one thing, cracker has a precise and also popular meaning: one who removes copyright protection from software. Meanwhile, blackhats aren't exactly rolling over to surrender their language either. From the latest Phrack issue:
 
 <blockquote>So no, I wasn't that kid that used to hang out at Radio Shack pulling apart electronic equipment and reassembling it to "see how it works." (...) that doesn't make you a "hacker" - it makes you a wannabe EE undergrad. (...) Hacking boxes makes you a "hacker" ! That's right! Write your local representatives at Wikipedia / urbandictionary / OED and let them know that hackers are people that gain unauthorized access/privileges to computerized systems!</blockquote>
 The whole thing would offend most people, so no link. It's readily googable but be careful about browser exploits, you never know. As a neutral party, Wikipedia has sensible guidelines when it comes to <a href="http://en.wikipedia.org/wiki/Wikipedia:Naming_conflict#How_to_make_a_choice_among_controversial_names">controversial names</a>:
 
 > A city, country, people or person, by contrast, is a self-identifying entity: it has a preferred name for itself. The city formerly called Danzig now calls itself Gdansk; the man formerly known as Cassius Clay now calls himself Muhammad Ali. These names are not simply arbitrary terms but are key statements of an entity's own identity. This should always be borne in mind when dealing with controversies involving self-identifying names. (...)
-> 
+>
 > A number of objective criteria can be used to determine common or self-identifying usage: Is the name in common usage in English? (...) Is it the name used by the subject to describe itself or themselves?
 
 These criteria apply squarely to both types of "hackers." Common usage? <a href="http://dictionary.reference.com/search?q=hacker">Check</a>. Used to describe themselves? Definitely. The word is now hopelessly ambiguous, as it seems to have been from the start, puzzling outsiders. But it's always clear to hackers.
