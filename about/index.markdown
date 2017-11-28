@@ -6,7 +6,7 @@ footer: false
 comments: false
 ---
 
-<img class="center" src="/images/aboutPhoto500px.jpg" alt="Author and his dog Chai">
+<img class="center" src="/theme/images/aboutPhoto500px.jpg" alt="Author and his dog Chai">
 
 This blog aims to teach and amuse people interested in computers. I distill
 practical computer science into clear prose illustrated by diagrams to bring you
