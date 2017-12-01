@@ -13,10 +13,10 @@ the important and often misunderstood relationship between files and
 memory and its consequences for performance.
 
 Two serious problems must be solved by the OS when it comes to files.  The first
-one is the mind-blowing slowness of hard drives, and 
+one is the mind-blowing slowness of hard drives, and
 [disk seeks in particular](post/what-your-computer-does-while-you-wait),
 relative to memory. The second is the need to load file contents in physical
-memory once and *share* the contents among programs. If you use 
+memory once and *share* the contents among programs. If you use
 [Process Explorer](http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx) to poke
 at Windows processes, you'll see there are \~15MB worth of common DLLs loaded in
 every process. My Windows box right now is running 100 processes, so without
