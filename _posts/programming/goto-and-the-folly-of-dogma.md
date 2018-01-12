@@ -1,16 +1,9 @@
 ---
 title: Goto and the folly of dogma
-date: 2017-01-11 13:00:00 -0600
+date: 2018-01-11 13:00:00 -0600
 categories:
 - [programming]
 ---
-
-{% blockquote Gavin de Becker on personal safety https://www.samharris.org/podcast/item/living-with-violence Interview with Sam Harris %}
-I want to tell you why I resist rules in general. Magazine articles love "The
-Five Ways to Avoid Violence." And you memorize these things and imagine that by
-rote somehow they will apply to your situation, but they won't. They won't
-reliably do so.
-{% endblockquote %}
 
 Many programmers are surprised to find out that the `goto` statement is still
 widely used in modern, high-quality codebases. Here are some examples, using the
