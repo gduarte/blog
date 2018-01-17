@@ -255,8 +255,8 @@ Atlético Mineiro.
 
 [sysinternals]: http://technet.microsoft.com/en-us/sysinternals/bb842062.aspx
 
-[RSS]: http://feeds.feedburner.com/GustavoDuarte
-[Twitter]: http://twitter.com/food4hackers
+[RSS]: https://manybutfinite.com/feed.xml
+[Twitter]: http://twitter.com/manybutfinite
 [__kernel_vsyscall]: https://github.com/torvalds/linux/blob/v3.17/arch/x86/vdso/vdso32/sysenter.S#L28
 
 [syscalls.list]: https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/syscalls.list;h=42b6c2ef424440d1a8bc1542271c7170ad205ae2;hb=4c6da7da9fb1f0f94e668e6d2966a4f50a7f0d85

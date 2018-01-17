@@ -20,6 +20,5 @@ Please subscribe via the [newsletter](/subscribe). There's an [RSS] feed as
 well, and [Twitter].  Also, if you're in Colorado and would like to get together
 for coffee, snowboarding, or going outside, hit me up.
 
-[RSS]: http://feeds.feedburner.com/GustavoDuarte
 [RSS]: https://manybutfinite.com/atom.xml
 [Twitter]: http://twitter.com/manybutfinite

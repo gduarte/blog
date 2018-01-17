@@ -135,10 +135,9 @@ part of the OS puzzle, and it's very similar to other situations we'll see, so
 this helps us build the picture of a running kernel. More next week, [RSS] and
 [Twitter].
 
-[RSS]: http://feeds.feedburner.com/GustavoDuarte
-[Twitter]: http://twitter.com/food4hackers
+[RSS]: https://manybutfinite.com/feed.xml
+[Twitter]: http://twitter.com/manybutfinite
 [dynamic tick]: https://github.com/torvalds/linux/blob/v3.17/Documentation/timers/NO_HZ.txt#L17
-[subscribe]: http://feeds.feedburner.com/GustavoDuarte
 [cpuidle-lwn]: http://lwn.net/Articles/384146/
 [jcm-on-interrupts]: http://www.jonmasters.org/blog/2007/12/12/everything-you-know-about-interrupts-is-wrong/
 [intel-msi]: http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/msg-signaled-interrupts-paper.pdf

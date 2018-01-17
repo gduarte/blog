@@ -4,7 +4,7 @@ title: When Does Your OS Run?
 date: 2014-10-28 08:00:00 -0600
 comments: true
 published: true
-categories: 
+categories:
 - [software illustrated]
 - [internals]
 - [linux]
@@ -94,7 +94,7 @@ a CPU is busy running a Vim command when an interrupt arrives:
 
 {% img center /img/os/vim-interrupted.png %}
 
-Notice how the interrupt's arrival causes a switch to kernel mode 
+Notice how the interrupt's arrival causes a switch to kernel mode
 and [ring zero] but it *does not change the active task*. It's as if Vim made
 a magic function call straight into the kernel, but Vim is *still there*, its
 [address space][anatomy] intact, waiting for that call to return.
@@ -108,8 +108,8 @@ have questions, especially as the posts come out, fire away and I'll try to
 answer them in the posts themselves or as comments. Next installment is
 tomorrow on [RSS][subscribe] and [Twitter][follow me].
 
-[subscribe]: http://feeds.feedburner.com/GustavoDuarte
-[follow me]: http://twitter.com/food4hackers
+[subscribe]: https://manybutfinite.com/feed.xml
+[follow me]: http://twitter.com/manybutfinite
 [jcm-on-interrupts]: http://www.jonmasters.org/blog/2007/12/12/everything-you-know-about-interrupts-is-wrong/
 [intel-msi]: http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/msg-signaled-interrupts-paper.pdf
 [pcie-system-architecture-ch9]: http://my.safaribooksonline.com/0321156307/ch09

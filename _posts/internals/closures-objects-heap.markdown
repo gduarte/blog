@@ -332,8 +332,8 @@ implementation topics like object binding and vtables. But the call of the
 kernel is strong, so there's an OS post coming out tomorrow.  I invite you to
 [subscribe] and [follow me].
 
-[subscribe]: http://feeds.feedburner.com/GustavoDuarte
-[follow me]: http://twitter.com/food4hackers
+[subscribe]: https://manybutfinite.com/feed.xml
+[follow me]: http://twitter.com/manybutfinite
 [stack]: /post/journey-to-the-stack "Journey to the Stack"
 [stackFolly-gdb-commands]: https://github.com/gduarte/blog/blob/master/code/x86-stack/stackFolly-gdb-commands.txt
 [readIntoHeap]: https://github.com/gduarte/blog/blob/master/code/x86-stack/readIntoHeap.c
