@@ -6,17 +6,20 @@ footer: false
 comments: false
 ---
 
-<img class="center" src="/theme/images/aboutPhoto500px.jpg" alt="Photo of author">
+This is a site for curious people interested in learning about technology and
+science, but who want **rigorous** material that stays true to source code,
+papers, and data. No hand-waving or mushy analogies - we give you the real deal.
 
-This is a site for people interested in tech and science posts that are
-accessible yet rigorous. I cover both newly published papers and long-standing
-topics in computer science, machine learning, genomics, and social sciences.
-I try to make things as simple as possible, but not simpler, staying true to the
-papers, source code, and data.
+We cover mostly computer science and machine learning topics, with a dash of
+other fields thrown in. Each post is made as simple as possible, but not
+simpler, and we use illustrations to help convey difficult concepts.  Everything
+from newly published papers to established knowledge is fair game. The goal is
+one post a week.
 
-Best way to subscribe is via the [newsletter](/subscribe). There's an [RSS] feed
-as well, and [Twitter].  If you're in Colorado and would like to get together
+Please subscribe via the [newsletter](/subscribe). There's an [RSS] feed as
+well, and [Twitter].  Also, if you're in Colorado and would like to get together
 for coffee, snowboarding, or going outside, hit me up.
 
 [RSS]: http://feeds.feedburner.com/GustavoDuarte
+[RSS]: https://manybutfinite.com/atom.xml
 [Twitter]: http://twitter.com/manybutfinite
