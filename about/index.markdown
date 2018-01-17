@@ -16,9 +16,9 @@ simpler, and we use illustrations to help convey difficult concepts.  Everything
 from newly published papers to established knowledge is fair game. The goal is
 one post a week.
 
-Please subscribe via the [newsletter](/subscribe). There's an [RSS] feed as
+Please subscribe via the [newsletter](/subscribe). There's an [RSS feed] as
 well, and [Twitter].  Also, if you're in Colorado and would like to get together
 for coffee, snowboarding, or going outside, hit me up.
 
-[RSS]: https://manybutfinite.com/atom.xml
+[RSS feed]: https://manybutfinite.com/feed.xml
 [Twitter]: http://twitter.com/manybutfinite
