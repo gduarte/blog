@@ -1,6 +1,6 @@
 ---
 title: Covid-19 Data Sources for Programmers
-date: 2020-04-08 07:00:00 -0700
+date: 2020-04-08 10:00:00 -0700
 categories:
 - [science]
 - [covid-19]
