@@ -10,9 +10,9 @@ I've been doing analysis of Covid cases to try to understand what to expect in
 terms of lockdown length and disease progress, especially in Colorado and
 Brazil, the places I spend the most time in. There are a lot of data sources
 around, and it took me a few hours to find and test a number of them. I hope
-this saves a few hours for anyone interested in crunching Covid numbers. If you
-have suggestions and tips on data sources, please open a PR or issue in my
-[Github repo][mbf-repo]. Here we go.
+this saves time for anyone interested in crunching Covid numbers. If you have
+suggestions and tips on data sources, please open a PR or issue in my [Github
+repo][mbf-repo]. Here we go.
 
 [John Burn-Murdoch](https://twitter.com/jburnmurdoch) and his team at the
 Financial Times have done a [great job][ft-corona] reporting visually on the
